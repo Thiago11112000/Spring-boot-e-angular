@@ -20,8 +20,8 @@ public class Controle {
     }
 
     @GetMapping("/")
-    public  String teste(){
-        return "Hello World!";
+    public  Iterable<Cliente> selecionar(){
+        return acao.findAll();
     }
 
 }
