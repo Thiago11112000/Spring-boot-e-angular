@@ -119,6 +119,18 @@ export class PrincipalComponent {
 
    }
 
+  // Método para cancelar
+  cancelar():void{
+    // Limpa formulário
+    this.cliente = new Cliente();
+
+    // Visibilidade dos botões
+    this.btnCadastro = true;
+
+    // Visibilidade da tabela
+    this.tabela = true;
+  }
+
 
 
 // Método de inicialização
