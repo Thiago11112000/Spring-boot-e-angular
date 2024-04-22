@@ -30,6 +30,12 @@ constructor(private servico:ClienteService){}
 
 }
 
+// Método de cadastro
+
+cadastrar():void{
+  this.servico.cadastrar(this.cliente)
+  .subscribe(retorno => {this.clientes.push (retorno);})
+}
 // Método de inicialização
 
 ngOnInit(){
