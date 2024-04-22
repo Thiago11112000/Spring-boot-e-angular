@@ -8,42 +8,58 @@ import { ClienteService } from '../servico/cliente.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-
  // Objeto do tipo Cliente
  cliente = new Cliente();
 
+ // Variável para visibilidade dos botões
+ btnCadastro:boolean = true;
 
-  //Variável para visibilidade dos botões
+ // Variável para visibilidade da tabela
+ tabela:boolean = true;
 
-  btnCadastro:boolean = true;
  // JSON de clientes
-
  clientes:Cliente[] = [];
 
  // Construtor
-constructor(private servico:ClienteService){}
+ constructor(private servico:ClienteService){}
 
  // Método de seleção
  selecionar():void{
-  this.servico.selecionar()
-  .subscribe(retorno => this.clientes = retorno);
+   this.servico.selecionar()
+   .subscribe(retorno => this.clientes = retorno);
+ }
+
+ // Método de cadastro
+ cadastrar():void{
+   this.servico.cadastrar(this.cliente)
+   .subscribe(retorno => {
+
+     // Cadastrar o cliente no vetor
+     this.clientes.push(retorno);
+
+     // Limpar formulário
+     this.cliente = new Cliente();
+
+     // Mensagem
+     alert('Cliente cadastrado com sucesso!');
+   });
+ }
+// Método para selecionar um cliente específico
+selecionarCliente(posicao:number):void{
+
+  // Selecionar cliente no vetor
+   this.cliente = this.clientes[posicao];
+
+   // Visibilidade dos botões
+   this.btnCadastro = false;
+
+  // Visibilidade da Tabela
+  this.tabela = false;
 
 }
 
-// Método de cadastro
-
-cadastrar():void{
-  this.servico.cadastrar(this.cliente)
-  .subscribe(retorno => {
-
-    //Cadastrar o cliente no vetor
-    this.clientes.push (retorno);})
 
 
-    // Limpar formulário
-
-    this.cliente  = new Cliente();
-}
 // Método de inicialização
 
 ngOnInit(){
