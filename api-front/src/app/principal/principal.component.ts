@@ -22,7 +22,13 @@ constructor(private servico:ClienteService){}
  // Método de seleção
  selecionar():void{
   this.servico.selecionar()
-  .subscribe(retorno => this.clientes = retorno)
+  .subscribe(retorno => this.clientes = retorno);
+
 }
 
+// Método de inicialização
+
+ngOnInit(){
+this.selecionar();
+}
 }
