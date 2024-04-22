@@ -30,7 +30,7 @@ export class ClienteService {
    }
     // Método para remover clientes
     remover(codigo:number):Observable<void>{
-     return  this.http.delete<void>(this.url + '/' + codigo)
+      return this.http.delete<void>(this.url + '/' + codigo);
     }
    }
 
