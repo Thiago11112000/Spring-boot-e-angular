@@ -15,7 +15,6 @@ export class ClienteService {
   constructor(private http:HttpClient) { }
 
   // Método para selecionar todos os clientes
-
   selecionar():Observable<Cliente[]>{
     return this.http.get<Cliente[]>(this.url);
   }
@@ -25,5 +24,9 @@ export class ClienteService {
   cadastrar(obj:Cliente):Observable<Cliente>{
    return this.http.post<Cliente>(this.url, obj);
   }
+
+   editar(obj:Cliente):Observable<Cliente>{
+    return this.http.put<Cliente>(this.url, obj);
+   }
 }
 
